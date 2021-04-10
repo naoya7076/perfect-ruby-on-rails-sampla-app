@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
     raise ActionController::RoutingError, "ログイン状態でTicketsController#newにアクセス"
   end
 
-  def createe
+  def create
     event = Event.find(params[:event_id])
     @ticket = current_user.tickets.build do |t|
       t.event = event
