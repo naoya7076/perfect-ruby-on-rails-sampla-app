@@ -7,6 +7,11 @@ class Event < ApplicationRecord
   validates :end_at, presence: true
   validate :start_at_shoud_be_before_end_at
 
+  def created_by?(user)
+    return false unless user
+    owner_id === user.id
+  end
+
   private
 
   def start_at_shoud_be_before_end_at
