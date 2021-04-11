@@ -2,7 +2,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
   helper_method :logged_in?, :current_user
 
+  rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
+
   private
+
+  def error404(e)
+    render "error404", status: 404, formats: [:html]
+  end
 
   def logged_in?
     !!current_user
