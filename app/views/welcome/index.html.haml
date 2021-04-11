@@ -5,4 +5,4 @@
       %h5.list-group-item-heading= event.name
       %p.mb-1= "#{l(event.start_at, format: :long)} - #{l(event.end_at, format: :long)}"
       
-= paginame @events
+= paginate @events
